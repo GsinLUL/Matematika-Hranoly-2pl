@@ -1210,8 +1210,7 @@
           <p>
             Ak sú bočné steny <strong>kolmé</strong> na podstavy (bočné hrany sú
             kolmice na rovinu podstavy), hovoríme o
-            <strong>kolmom hranole</strong> – jeho bočné steny sú obdĺžniky. V
-            opačnom prípade ide o <strong>kosý hranol</strong>.
+            <strong>kolmom hranole</strong> – jeho bočné steny sú obdĺžniky.
           </p>
           <p>
             <strong>Pravidelný \(n\)-boký hranol</strong> je kolmý hranol,
@@ -1260,13 +1259,7 @@
               Bočné hrany ⊥ podstava<br />Bočné steny sú obdĺžniky
             </div>
           </div>
-          <div class="special-case">
-            <div class="sc-icon">◇</div>
-            <div class="sc-name">Kosý hranol</div>
-            <div class="sc-detail">
-              Bočné hrany nie sú ⊥<br />Bočné steny sú rovnobežníky
-            </div>
-          </div>
+
           <div class="special-case">
             <div class="sc-icon">⬡</div>
             <div class="sc-name">Pravidelný hranol</div>
@@ -1356,20 +1349,6 @@
                 aria-label="Výška hranola"
               />
             </div>
-            <div class="control-group">
-              <div class="toggle-wrap">
-                <span id="lbl-kolmy" class="active-label">Kolmý</span>
-                <div
-                  class="toggle"
-                  id="toggle-kosy"
-                  tabindex="0"
-                  role="switch"
-                  aria-checked="false"
-                  aria-label="Prepnúť kolmý/kosý"
-                ></div>
-                <span id="lbl-kosy">Kosý</span>
-              </div>
-            </div>
           </div>
 
           <div class="live-values" id="live-values">
@@ -1440,7 +1419,7 @@
         <h2><span class="section-number">04</span> Vzorce s odvodením</h2>
 
         <!-- Surface Area -->
-        <h3>Povrch hranola</h3>
+        <h3>Povrch hranola (S)</h3>
         <div class="card card-accent">
           <p>Povrch hranola je súčet obsahov všetkých jeho stien:</p>
           <p>$$S = 2 \cdot S_p + S_b$$</p>
@@ -1495,46 +1474,21 @@
         <button class="btn btn-sm" id="btn-deriv-surface">Ďalší krok →</button>
 
         <!-- Volume -->
-        <h3>Objem hranola</h3>
+        <h3>Objem hranola (V)</h3>
         <div class="card card-accent">
           <p>$$V = S_p \cdot v$$</p>
           <p>
-            Objem ľubovoľného hranola = obsah podstavy × výška (kolmá
-            vzdialenosť medzi podstavami).
+            Objem ľubovoľného hranola sa vypočíta ako súčin obsahu podstavy
+            (\(S_p\)) a výšky hranola (\(v\)).
+          </p>
+          <p>
+            Predstaviť si to môžeme veľmi jednoducho: obsah podstavy \(S_p\) nám
+            hovorí, koľko miesta (plochy) zaberie jedna tenká "vrstva" alebo
+            "plátok" na spodku. Ak tieto plátky naukladáme na seba až do výšky
+            \(v\), vyplníme celý vnútorný priestor telesa. Objem je teda celkové
+            množstvo priestoru, ktoré teleso zaberá.
           </p>
         </div>
-
-        <h4>Odvodenie – Cavalieriho princíp</h4>
-        <div class="derivation-steps" id="deriv-volume">
-          <div class="deriv-step visible">
-            <div class="step-number">KROK 1</div>
-            <p>
-              <strong>Cavalieriho princíp:</strong> Ak dve telesá majú v každej
-              výške rovnaký obsah prierezu, majú rovnaký objem.
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 2</div>
-            <p>
-              Prierez hranola v ľubovoľnej výške \(h\) (kde \(0 \le h \le v\))
-              je vždy rovnaký \(n\)-uholník – zhodný s podstavou. Teda obsah
-              prierezu je v každej výške \(S_p\).
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 3</div>
-            <p>
-              Hranol si môžeme predstaviť ako „stoh" nekonečne tenkých vrstiev
-              hrúbky \(\mathrm{d}h\), každá s obsahom \(S_p\):
-            </p>
-            <p>$$V = \int_0^{v} S_p \,\mathrm{d}h = S_p \cdot v$$</p>
-            <p>
-              Toto platí aj pre <strong>kosý hranol</strong> – prierezy kolmé na
-              bočné hrany majú stále rovnaký obsah.
-            </p>
-          </div>
-        </div>
-        <button class="btn btn-sm" id="btn-deriv-volume">Ďalší krok →</button>
 
         <!-- Regular n-gon area -->
         <h3>Obsah pravidelného \(n\)-uholníka</h3>
@@ -2421,7 +2375,6 @@
       // Derivation step tracking
       const derivSteps = {
         "deriv-surface": 1,
-        "deriv-volume": 1,
         "deriv-ngon": 1,
       };
 
@@ -2480,7 +2433,6 @@
         const sn = document.getElementById("slider-n");
         const sa = document.getElementById("slider-a");
         const sv = document.getElementById("slider-v");
-        const toggle = document.getElementById("toggle-kosy");
 
         sn.addEventListener("input", () => {
           state.n = parseInt(sn.value);
@@ -2501,26 +2453,6 @@
           document.getElementById("val-v").textContent = state.v.toFixed(1);
           rebuildPrism();
           updateLiveValues();
-        });
-
-        toggle.addEventListener("click", () => {
-          state.isOblique = !state.isOblique;
-          toggle.classList.toggle("on", state.isOblique);
-          toggle.setAttribute("aria-checked", state.isOblique);
-          document
-            .getElementById("lbl-kolmy")
-            .classList.toggle("active-label", !state.isOblique);
-          document
-            .getElementById("lbl-kosy")
-            .classList.toggle("active-label", state.isOblique);
-          rebuildPrism();
-        });
-
-        toggle.addEventListener("keydown", (e) => {
-          if (e.key === " " || e.key === "Enter") {
-            e.preventDefault();
-            toggle.click();
-          }
         });
       }
 
@@ -2682,10 +2614,10 @@
           prismGroup.remove(child);
         }
 
-        const { n, a, v, isOblique } = state;
+        const { n, a, v } = state;
         const verts = polygonVertices(n, a);
-        const shearX = isOblique ? v * 0.35 : 0;
-        const shearZ = isOblique ? v * 0.15 : 0;
+        const shearX = 0;
+        const shearZ = 0;
 
         // Materials
         const matFace = new THREE.MeshPhongMaterial({
@@ -3380,9 +3312,6 @@
         document
           .getElementById("btn-deriv-surface")
           .addEventListener("click", () => revealDerivStep("deriv-surface"));
-        document
-          .getElementById("btn-deriv-volume")
-          .addEventListener("click", () => revealDerivStep("deriv-volume"));
         document
           .getElementById("btn-deriv-ngon")
           .addEventListener("click", () => revealDerivStep("deriv-ngon"));
