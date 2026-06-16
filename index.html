@@ -504,6 +504,15 @@
         padding: 0.35rem 0.75rem;
       }
 
+      .btn-outline {
+        background-color: transparent;
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+      }
+      .btn-outline:hover {
+        background-color: var(--border-color);
+      }
+
       .btn-group {
         display: flex;
         flex-wrap: wrap;
@@ -1421,10 +1430,13 @@
         <!-- Surface Area -->
         <h3>Povrch hranola (S)</h3>
         <div class="card card-accent">
-          <p>Povrch hranola je súčet obsahov všetkých jeho stien:</p>
-          <p>$$S = 2 \cdot S_p + S_b$$</p>
           <p>
-            kde \(S_p\) je obsah podstavy a \(S_b\) je obsah plášťa (bočný
+            Celkový povrch sa skladá z dvoch podstáv a plášťa, bez ohľadu na to,
+            koľko hrán má \(n\)-uholník v podstave:
+          </p>
+          <p>$$S = 2 \cdot S_p + S_{pl}$$</p>
+          <p class="text-muted" style="margin-top: 1rem">
+            kde \(S_p\) je obsah podstavy a \(S_{pl}\) je obsah plášťa (bočný
             povrch).
           </p>
         </div>
@@ -1447,47 +1459,104 @@
             <div class="step-number">KROK 2</div>
             <p>
               Ak „rozbalíme" plášť do roviny, všetkých \(n\) obdĺžnikov sa
-              poskladá vedľa seba do jedného veľkého obdĺžnika.
-            </p>
-            <p>
-              Šírka tohto obdĺžnika = súčet všetkých strán podstavy =
+              poskladá vedľa seba do jedného veľkého obdĺžnika. Šírka tohto
+              obdĺžnika je rovná súčtu všetkých strán podstavy, čo je vlastne
               <strong>obvod podstavy \(o\)</strong>.
             </p>
           </div>
           <div class="deriv-step">
             <div class="step-number">KROK 3</div>
-            <p>Výška obdĺžnika = výška hranola \(v\).</p>
-            <p>Obsah plášťa preto je:</p>
-            <p>$$S_b = o \cdot v$$</p>
+            <p>
+              Výška obdĺžnika je výška hranola \(v\). Obsah plášťa preto je:
+            </p>
+            <p>$$S_{pl} = o \cdot v$$</p>
           </div>
           <div class="deriv-step">
             <div class="step-number">KROK 4</div>
             <p>
-              Pre pravidelný \(n\)-boký hranol s hranou \(a\): obvod \(o = n
+              Pre pravidelný \(n\)-boký hranol s hranou \(a\) je obvod \(o = n
               \cdot a\), teda:
             </p>
-            <p>$$S_b = n \cdot a \cdot v$$</p>
+            <p>$$S_{pl} = n \cdot a \cdot v$$</p>
             <p>A celkový povrch:</p>
             <p>$$\boxed{S = 2 \cdot S_p + n \cdot a \cdot v}$$</p>
           </div>
         </div>
-        <button class="btn btn-sm" id="btn-deriv-surface">Ďalší krok →</button>
+        <div
+          class="deriv-controls"
+          style="display: flex; gap: 0.5rem; margin-top: 1rem"
+        >
+          <button class="btn btn-sm" id="btn-deriv-surface">
+            Ďalší krok →
+          </button>
+          <button
+            class="btn btn-sm btn-outline"
+            id="btn-reset-surface"
+            style="display: none"
+          >
+            Reset krokov
+          </button>
+        </div>
 
         <!-- Volume -->
         <h3>Objem hranola (V)</h3>
         <div class="card card-accent">
+          <p>
+            Objem telesa vyjadruje celkové množstvo priestoru, ktoré teleso
+            zaberá:
+          </p>
           <p>$$V = S_p \cdot v$$</p>
-          <p>
-            Objem ľubovoľného hranola sa vypočíta ako súčin obsahu podstavy
-            (\(S_p\)) a výšky hranola (\(v\)).
+          <p class="text-muted" style="margin-top: 1rem">
+            kde \(S_p\) je obsah podstavy a \(v\) je výška telesa.
           </p>
-          <p>
-            Predstaviť si to môžeme veľmi jednoducho: obsah podstavy \(S_p\) nám
-            hovorí, koľko miesta (plochy) zaberie jedna tenká "vrstva" alebo
-            "plátok" na spodku. Ak tieto plátky naukladáme na seba až do výšky
-            \(v\), vyplníme celý vnútorný priestor telesa. Objem je teda celkové
-            množstvo priestoru, ktoré teleso zaberá.
-          </p>
+        </div>
+
+        <h4>Odvodenie vzorca pre objem</h4>
+        <p>
+          Kliknite na <strong>„Ďalší krok"</strong> a postupne odhaľte
+          odvodenie:
+        </p>
+        <div class="derivation-steps" id="deriv-volume">
+          <div class="deriv-step visible">
+            <div class="step-number">KROK 1</div>
+            <p>
+              Objem ľubovoľného hranola sa vypočíta ako súčin obsahu podstavy
+              (\(S_p\)) a výšky hranola (\(v\)).
+            </p>
+          </div>
+          <div class="deriv-step">
+            <div class="step-number">KROK 2</div>
+            <p>
+              Predstaviť si to môžeme veľmi jednoducho: obsah podstavy \(S_p\)
+              nám hovorí, koľko miesta (plochy) zaberie jedna tenká "vrstva"
+              alebo "plátok" na spodku.
+            </p>
+          </div>
+          <div class="deriv-step">
+            <div class="step-number">KROK 3</div>
+            <p>
+              Ak tieto plátky naukladáme na seba až do výšky \(v\), vyplníme
+              celý vnútorný priestor telesa.
+            </p>
+          </div>
+          <div class="deriv-step">
+            <div class="step-number">KROK 4</div>
+            <p>Objem je teda daný vzťahom:</p>
+            <p>$$\boxed{V = S_p \cdot v}$$</p>
+          </div>
+        </div>
+        <div
+          class="deriv-controls"
+          style="display: flex; gap: 0.5rem; margin-top: 1rem"
+        >
+          <button class="btn btn-sm" id="btn-deriv-volume">Ďalší krok →</button>
+          <button
+            class="btn btn-sm btn-outline"
+            id="btn-reset-volume"
+            style="display: none"
+          >
+            Reset krokov
+          </button>
         </div>
 
         <!-- Regular n-gon area -->
@@ -1538,7 +1607,19 @@
             </p>
           </div>
         </div>
-        <button class="btn btn-sm" id="btn-deriv-ngon">Ďalší krok →</button>
+        <div
+          class="deriv-controls"
+          style="display: flex; gap: 0.5rem; margin-top: 1rem"
+        >
+          <button class="btn btn-sm" id="btn-deriv-ngon">Ďalší krok →</button>
+          <button
+            class="btn btn-sm btn-outline"
+            id="btn-reset-ngon"
+            style="display: none"
+          >
+            Reset krokov
+          </button>
+        </div>
 
         <!-- Special cases table -->
         <h3>Špeciálne prípady</h3>
@@ -1746,13 +1827,13 @@
               <div class="solution-step" data-ex="ex2">
                 <div class="step-number">KROK 3 – Plášť</div>
                 <p>Obvod podstavy: \(o = 4a = 24\;\text{cm}\)</p>
-                <p>\(S_b = o \cdot v = 24 \cdot 10 = 240\;\text{cm}^2\)</p>
+                <p>\(S_{pl} = o \cdot v = 24 \cdot 10 = 240\;\text{cm}^2\)</p>
               </div>
 
               <div class="solution-step" data-ex="ex2">
                 <div class="step-number">KROK 4 – Celkový povrch</div>
                 <p>
-                  \(S = 2S_p + S_b = 2 \cdot 36 + 240 = 72 + 240 =
+                  \(S = 2S_p + S_{pl} = 2 \cdot 36 + 240 = 72 + 240 =
                   \mathbf{312\;\text{cm}^2}\)
                 </p>
               </div>
@@ -1830,13 +1911,13 @@
               <div class="solution-step" data-ex="ex3">
                 <div class="step-number">KROK 2 – Plášť</div>
                 <p>Obvod podstavy: \(o = 3a = 24\;\text{cm}\)</p>
-                <p>$$S_b = o \cdot v = 24 \cdot 15 = 360\;\text{cm}^2$$</p>
+                <p>$$S_{pl} = o \cdot v = 24 \cdot 15 = 360\;\text{cm}^2$$</p>
               </div>
 
               <div class="solution-step" data-ex="ex3">
                 <div class="step-number">KROK 3 – Celkový povrch</div>
                 <p>
-                  $$S = 2S_p + S_b = 32\sqrt{3} + 360 \approx 55{,}42 + 360 =
+                  $$S = 2S_p + S_{pl} = 32\sqrt{3} + 360 \approx 55{,}42 + 360 =
                   \mathbf{415{,}42\;\text{cm}^2}$$
                 </p>
               </div>
@@ -1961,12 +2042,12 @@
               <div class="solution-step" data-ex="ex4">
                 <div class="step-number">KROK 5 – Povrch</div>
                 <p>
-                  Plášť: \(S_b = 6a \cdot v = 30\sqrt{69} \approx
+                  Plášť: \(S_{pl} = 6a \cdot v = 30\sqrt{69} \approx
                   249{,}2\;\text{cm}^2\)
                 </p>
                 <p>
-                  $$S = 2S_p + S_b = 75\sqrt{3} + 30\sqrt{69} \approx 129{,}9 +
-                  249{,}2 = \mathbf{379{,}1\;\text{cm}^2}$$
+                  $$S = 2S_p + S_{pl} = 75\sqrt{3} + 30\sqrt{69} \approx 129{,}9
+                  + 249{,}2 = \mathbf{379{,}1\;\text{cm}^2}$$
                 </p>
               </div>
 
@@ -2341,7 +2422,6 @@
         n: 5,
         a: 3,
         v: 5,
-        isOblique: false,
         unfoldProgress: 0, // 0 = folded (3D), 1 = unfolded (net)
         animating: false,
       };
@@ -2375,6 +2455,7 @@
       // Derivation step tracking
       const derivSteps = {
         "deriv-surface": 1,
+        "deriv-volume": 1,
         "deriv-ngon": 1,
       };
 
@@ -3313,8 +3394,21 @@
           .getElementById("btn-deriv-surface")
           .addEventListener("click", () => revealDerivStep("deriv-surface"));
         document
+          .getElementById("btn-deriv-volume")
+          .addEventListener("click", () => revealDerivStep("deriv-volume"));
+        document
           .getElementById("btn-deriv-ngon")
           .addEventListener("click", () => revealDerivStep("deriv-ngon"));
+
+        document
+          .getElementById("btn-reset-surface")
+          .addEventListener("click", () => resetDerivStep("deriv-surface"));
+        document
+          .getElementById("btn-reset-volume")
+          .addEventListener("click", () => resetDerivStep("deriv-volume"));
+        document
+          .getElementById("btn-reset-ngon")
+          .addEventListener("click", () => resetDerivStep("deriv-ngon"));
       }
 
       function revealDerivStep(id) {
@@ -3328,15 +3422,31 @@
           renderMathIn(steps[current]);
         }
 
-        // Hide button if all steps revealed
+        document.getElementById(`btn-reset-${id}`).style.display =
+          "inline-block";
+
         if (derivSteps[id] >= steps.length) {
-          const btn = container.nextElementSibling;
-          if (btn && btn.classList.contains("btn")) {
-            btn.textContent = "✓ Všetky kroky odkryté";
-            btn.disabled = true;
-            btn.style.opacity = "0.5";
+          const btn = document.getElementById(`btn-deriv-${id.split("-")[1]}`);
+          if (btn) {
+            btn.style.display = "none";
           }
         }
+      }
+
+      function resetDerivStep(id) {
+        derivSteps[id] = 1;
+        const container = document.getElementById(id);
+        const steps = container.querySelectorAll(".deriv-step");
+        steps.forEach((step, index) => {
+          if (index === 0) {
+            step.classList.add("visible");
+          } else {
+            step.classList.remove("visible");
+          }
+        });
+        const btn = document.getElementById(`btn-deriv-${id.split("-")[1]}`);
+        if (btn) btn.style.display = "inline-block";
+        document.getElementById(`btn-reset-${id}`).style.display = "none";
       }
 
       // ============================================================
