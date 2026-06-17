@@ -1298,7 +1298,6 @@
         <a href="#siet" class="nav-link" id="nav-siet">Sieť</a>
         <a href="#vzorce" class="nav-link" id="nav-vzorce">Vzorce</a>
         <a href="#priklady" class="nav-link" id="nav-priklady">Príklady</a>
-        <a href="#kviz" class="nav-link" id="nav-kviz">Kvíz</a>
       </div>
     </nav>
 
@@ -1474,90 +1473,202 @@
       <section id="vzorce">
         <h2><span class="section-number">04</span> Výpočet S a V</h2>
 
-        <!-- Two unified formula cards side by side -->
-        <div class="formula-grid">
-          <div class="formula-card">
-            <h4>Povrch (S)</h4>
-            <div class="formula-main">
-              <p>$$S = 2 \cdot S_p + S_{pl}$$</p>
-            </div>
-            <ul>
-              <li>\(S_p\) – obsah jednej podstavy</li>
-              <li>\(S_{pl} = n \cdot a \cdot v\) – obsah plášťa</li>
-              <li>
-                Plášť = \(n\) obdĺžnikov rozvinutých do obdĺžnika \(o \times v\)
-              </li>
-            </ul>
-          </div>
-          <div class="formula-card">
-            <h4>Objem (V)</h4>
-            <div class="formula-main">
-              <p>$$V = S_p \cdot v$$</p>
-            </div>
-            <ul>
-              <li>\(S_p\) – obsah jednej podstavy</li>
-              <li>\(v\) – výška telesa (kolmá vzdialenosť podstáv)</li>
-              <li>Objem = plocha podstavy × počet „vrstiev" do výšky</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Obsah podstavy derivation -->
-        <h3>Obsah podstavy \(S_p\)</h3>
-        <div class="card card-highlight">
+        <!-- Obsah podstavy (S_p) -->
+        <h3>Obsah podstavy (\(S_p\))</h3>
+        <div class="card card-accent">
           <p>
-            Celkový povrch sa skladá z <strong>dvoch podstáv</strong> a
-            <strong>plášťa</strong>, bez ohľadu na to, koľko hrán má
-            \(n\)-uholník. Pre výpočet \(S_p\) rozdelíme pravidelný
-            \(n\)-uholník na \(n\) trojuholníkov:
+            Všeobecný postup pre výpočet obsahu pravidelného \(n\)-uholníka.
+            Rozdelíme ho na \(n\) rovnoramenných trojuholníkov so spoločným
+            vrcholom v strede.
           </p>
+          <div class="derivation-steps" id="deriv-sp">
+            <div class="deriv-step visible">
+              <div class="step-number">KROK 1</div>
+              <p>
+                Každý z \(n\) trojuholníkov má základňu \(a\) (strana
+                n-uholníka) a výšku \(r_a\) (apotéma – vzdialenosť od stredu k
+                strane).
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 2</div>
+              <p>Pre pravouhlý trojuholník (polovica jedného z n dielikov):</p>
+              <p>
+                $$r_a = \frac{a}{2\,\tan(\pi/n)} = \frac{a}{2}
+                \cot\!\left(\frac{\pi}{n}\right)$$
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 3</div>
+              <p>Obsah jedného trojuholníka:</p>
+              <p>
+                $$S_\triangle = \frac{1}{2} \cdot a \cdot r_a = \frac{a^2}{4}
+                \cot\!\left(\frac{\pi}{n}\right)$$
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 4</div>
+              <p>Celkový obsah pravidelného \(n\)-uholníka:</p>
+              <p>
+                $$\boxed{S_p = n \cdot S_\triangle =
+                \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)}$$
+              </p>
+            </div>
+          </div>
+          <div
+            class="deriv-controls"
+            style="display: flex; gap: 0.5rem; margin-top: 1rem"
+          >
+            <button class="btn btn-sm" id="btn-deriv-sp">
+              Ukázať postup →
+            </button>
+            <button
+              class="btn btn-sm btn-outline"
+              id="btn-reset-sp"
+              style="display: none"
+            >
+              Skryť postup
+            </button>
+          </div>
         </div>
 
-        <div class="derivation-steps" id="deriv-ngon">
-          <div class="deriv-step visible">
-            <div class="step-number">KROK 1</div>
-            <p>
-              Každý z \(n\) trojuholníkov má základňu \(a\) (strana n-uholníka)
-              a výšku \(r_a\) (apotéma – vzdialenosť od stredu k strane).
-            </p>
+        <!-- Obsah plášťa (S_pl) -->
+        <h3>Obsah plášťa (\(S_{pl}\))</h3>
+        <div class="card card-accent">
+          <p>Plášť hranola tvorí súčet obsahov všetkých jeho bočných stien.</p>
+          <div class="derivation-steps" id="deriv-spl">
+            <div class="deriv-step visible">
+              <div class="step-number">KROK 1</div>
+              <p>
+                Pravidelný \(n\)-boký hranol má \(n\) rovnakých bočných stien.
+                Každá stena je obdĺžnik so šírkou \(a\) a výškou \(v\).
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 2</div>
+              <p>
+                Ak plášť "rozbalíme" do roviny, dostaneme jeden veľký obdĺžnik.
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 3</div>
+              <p>
+                Šírka tohto veľkého obdĺžnika je rovná obvodu podstavy: \(O = n
+                \cdot a\).
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 4</div>
+              <p>
+                Celkový obsah plášťa vypočítame ako obvod podstavy \(\times\)
+                výška telesa:
+              </p>
+              <p>$$\boxed{S_{pl} = O \cdot v = n \cdot a \cdot v}$$</p>
+            </div>
           </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 2</div>
-            <p>Pre pravouhlý trojuholník (polovica jedného z n dielikov):</p>
-            <p>
-              $$r_a = \frac{a}{2\,\tan(\pi/n)} = \frac{a}{2}
-              \cot\!\left(\frac{\pi}{n}\right)$$
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 3</div>
-            <p>Obsah jedného trojuholníka:</p>
-            <p>
-              $$S_\triangle = \frac{1}{2} \cdot a \cdot r_a = \frac{a^2}{4}
-              \cot\!\left(\frac{\pi}{n}\right)$$
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 4</div>
-            <p>Celkový obsah pravidelného \(n\)-uholníka:</p>
-            <p>
-              $$\boxed{S_p = n \cdot S_\triangle =
-              \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)}$$
-            </p>
+          <div
+            class="deriv-controls"
+            style="display: flex; gap: 0.5rem; margin-top: 1rem"
+          >
+            <button class="btn btn-sm" id="btn-deriv-spl">
+              Ukázať postup →
+            </button>
+            <button
+              class="btn btn-sm btn-outline"
+              id="btn-reset-spl"
+              style="display: none"
+            >
+              Skryť postup
+            </button>
           </div>
         </div>
-        <div
-          class="deriv-controls"
-          style="display: flex; gap: 0.5rem; margin-top: 1rem"
-        >
-          <button class="btn btn-sm" id="btn-deriv-ngon">Ďalší krok →</button>
-          <button
-            class="btn btn-sm btn-outline"
-            id="btn-reset-ngon"
-            style="display: none"
+
+        <!-- Povrch (S) -->
+        <h3>Povrch (\(S\))</h3>
+        <div class="card card-accent">
+          <p>
+            Celkový povrch (\(S\)) je súčet obsahu všetkých plôch, ktoré
+            ohraničujú teleso.
+          </p>
+          <div class="derivation-steps" id="deriv-s">
+            <div class="deriv-step visible">
+              <div class="step-number">KROK 1</div>
+              <p>
+                Hranol je zhora a zdola ohraničený dvoma zhodnými podstavami.
+                Ich spoločný obsah je \(2 \cdot S_p\).
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 2</div>
+              <p>Zvyšok povrchu tvorí plášť s obsahom \(S_{pl}\).</p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 3</div>
+              <p>
+                Spojením týchto častí dostaneme univerzálny vzorec pre povrch
+                akéhokoľvek hranola:
+              </p>
+              <p>$$\boxed{S = 2 \cdot S_p + S_{pl}}$$</p>
+            </div>
+          </div>
+          <div
+            class="deriv-controls"
+            style="display: flex; gap: 0.5rem; margin-top: 1rem"
           >
-            Reset krokov
-          </button>
+            <button class="btn btn-sm" id="btn-deriv-s">Ukázať postup →</button>
+            <button
+              class="btn btn-sm btn-outline"
+              id="btn-reset-s"
+              style="display: none"
+            >
+              Skryť postup
+            </button>
+          </div>
+        </div>
+
+        <!-- Objem (V) -->
+        <h3>Objem (\(V\))</h3>
+        <div class="card card-accent">
+          <p>
+            Objem (\(V\)) vyjadruje veľkosť priestoru, ktorý hranol vyplňuje.
+          </p>
+          <div class="derivation-steps" id="deriv-v">
+            <div class="deriv-step visible">
+              <div class="step-number">KROK 1</div>
+              <p>
+                Predstavte si podstavu hranola s obsahom \(S_p\) ako základnú
+                vrstvu s minimálnou hrúbkou.
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 2</div>
+              <p>
+                Objem získame, ak túto základnú plochu budeme "vrstviť" na seba
+                kolmo nahor až do celkovej výšky telesa \(v\).
+              </p>
+            </div>
+            <div class="deriv-step">
+              <div class="step-number">KROK 3</div>
+              <p>
+                Univerzálny vzorec pre objem akéhokoľvek hranola je preto
+                súčinom obsahu podstavy a výšky:
+              </p>
+              <p>$$\boxed{V = S_p \cdot v}$$</p>
+            </div>
+          </div>
+          <div
+            class="deriv-controls"
+            style="display: flex; gap: 0.5rem; margin-top: 1rem"
+          >
+            <button class="btn btn-sm" id="btn-deriv-v">Ukázať postup →</button>
+            <button
+              class="btn btn-sm btn-outline"
+              id="btn-reset-v"
+              style="display: none"
+            >
+              Skryť postup
+            </button>
+          </div>
         </div>
 
         <!-- Prehľad vzorcov – tabuľka -->
@@ -2099,205 +2210,7 @@
         </div>
       </section>
 
-      <!-- ===== SECTION 6: KVÍZ ===== -->
-      <section id="kviz">
-        <h2><span class="section-number">06</span> Záverečný kvíz</h2>
-        <p>
-          Otestujte si, čo ste sa naučili. Vyberte správnu odpoveď a hneď
-          dostanete spätnú väzbu.
-        </p>
-
-        <div class="quiz-question" id="q1">
-          <div class="q-number">OTÁZKA 1 / 4</div>
-          <div class="q-text">Koľko hrán má päťboký hranol?</div>
-          <div class="quiz-options">
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q1', this, 0)"
-              data-idx="0"
-            >
-              <span class="opt-marker">A</span><span>10</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q1', this, 1)"
-              data-idx="1"
-            >
-              <span class="opt-marker">B</span><span>15</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q1', this, 2)"
-              data-idx="2"
-            >
-              <span class="opt-marker">C</span><span>12</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q1', this, 3)"
-              data-idx="3"
-            >
-              <span class="opt-marker">D</span><span>20</span>
-            </div>
-          </div>
-          <div class="quiz-feedback" id="fb-q1"></div>
-        </div>
-
-        <div class="quiz-question" id="q2">
-          <div class="q-number">OTÁZKA 2 / 4</div>
-          <div class="q-text">
-            Aký je objem pravidelného trojbokého hranola s hranou podstavy \(a =
-            6\;\text{cm}\) a výškou \(v = 10\;\text{cm}\)?
-          </div>
-          <div class="quiz-options">
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q2', this, 0)"
-              data-idx="0"
-            >
-              <span class="opt-marker">A</span><span>\(180\;\text{cm}^3\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q2', this, 1)"
-              data-idx="1"
-            >
-              <span class="opt-marker">B</span
-              ><span>\(90\sqrt{3} \approx 155{,}88\;\text{cm}^3\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q2', this, 2)"
-              data-idx="2"
-            >
-              <span class="opt-marker">C</span><span>\(360\;\text{cm}^3\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q2', this, 3)"
-              data-idx="3"
-            >
-              <span class="opt-marker">D</span
-              ><span>\(60\sqrt{3} \approx 103{,}92\;\text{cm}^3\)</span>
-            </div>
-          </div>
-          <div class="quiz-feedback" id="fb-q2"></div>
-        </div>
-
-        <div class="quiz-question" id="q3">
-          <div class="q-number">OTÁZKA 3 / 4</div>
-          <div class="q-text">
-            Plášť (bočný povrch) pravidelného \(n\)-bokého hranola s hranou
-            \(a\) a výškou \(v\) sa rovná:
-          </div>
-          <div class="quiz-options">
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q3', this, 0)"
-              data-idx="0"
-            >
-              <span class="opt-marker">A</span
-              ><span>\(n \cdot a \cdot v\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q3', this, 1)"
-              data-idx="1"
-            >
-              <span class="opt-marker">B</span
-              ><span>\(2n \cdot a \cdot v\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q3', this, 2)"
-              data-idx="2"
-            >
-              <span class="opt-marker">C</span><span>\(n \cdot a^2\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q3', this, 3)"
-              data-idx="3"
-            >
-              <span class="opt-marker">D</span
-              ><span>\(\frac{n \cdot a \cdot v}{2}\)</span>
-            </div>
-          </div>
-          <div class="quiz-feedback" id="fb-q3"></div>
-        </div>
-
-        <div class="quiz-question" id="q4">
-          <div class="q-number">OTÁZKA 4 / 4</div>
-          <div class="q-text">
-            Najdlhšia uhlopriečka pravidelného šesťuholníka so stranou \(a\) má
-            dĺžku:
-          </div>
-          <div class="quiz-options">
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q4', this, 0)"
-              data-idx="0"
-            >
-              <span class="opt-marker">A</span><span>\(a\sqrt{3}\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q4', this, 1)"
-              data-idx="1"
-            >
-              <span class="opt-marker">B</span><span>\(2a\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q4', this, 2)"
-              data-idx="2"
-            >
-              <span class="opt-marker">C</span><span>\(a\sqrt{2}\)</span>
-            </div>
-            <div
-              class="quiz-option"
-              tabindex="0"
-              onclick="selectQuiz('q4', this, 3)"
-              data-idx="3"
-            >
-              <span class="opt-marker">D</span><span>\(3a\)</span>
-            </div>
-          </div>
-          <div class="quiz-feedback" id="fb-q4"></div>
-        </div>
-
-        <div class="btn-group mt-2">
-          <button
-            class="btn btn-primary"
-            id="btn-quiz-eval"
-            onclick="evaluateQuiz()"
-          >
-            Vyhodnotiť kvíz
-          </button>
-        </div>
-
-        <div class="quiz-score" id="quiz-score">
-          <div class="score-number" id="score-num">0 / 4</div>
-          <div class="score-label" id="score-label">Skúste to znova!</div>
-        </div>
-      </section>
-
-      <!-- ===== SECTION 7: HISTÓRIA ===== -->
+      <!-- ===== SECTION 06: HISTÓRIA ===== -->
       <section id="historia">
         <h2><span class="section-number">07</span> História a zaujímavosti</h2>
 
@@ -2345,35 +2258,12 @@
         animating: false,
       };
 
-      // Quiz answers: correct index for each question
-      const quizAnswers = { q1: 1, q2: 1, q3: 0, q4: 1 };
-      const quizExplanations = {
-        q1: {
-          correct:
-            "Správne! Počet hrán n-bokého hranola je 3n, teda 3 × 5 = 15.",
-          wrong: "Nesprávne. Počet hrán n-bokého hranola je 3n = 3 × 5 = 15.",
-        },
-        q2: {
-          correct: "Správne! V = Sp·v = (√3/4)·36·10 = 90√3 ≈ 155,88 cm³.",
-          wrong:
-            "Nesprávne. Sp = (√3/4)·6² = 9√3, V = 9√3·10 = 90√3 ≈ 155,88 cm³.",
-        },
-        q3: {
-          correct: "Správne! Plášť = obvod × výška = n·a·v.",
-          wrong: "Nesprávne. Plášť = obvod podstavy × výška = n·a·v.",
-        },
-        q4: {
-          correct:
-            "Správne! Najdlhšia uhlopriečka pravidelného šesťuholníka = 2a (prechádza stredom).",
-          wrong:
-            "Nesprávne. Najdlhšia uhlopriečka pravidelného šesťuholníka je 2a.",
-        },
-      };
-      const quizState = {};
-
       // Derivation step tracking
       const derivSteps = {
-        "deriv-ngon": 1,
+        "deriv-sp": 1,
+        "deriv-spl": 1,
+        "deriv-s": 1,
+        "deriv-v": 1,
       };
 
       // Example step tracking
@@ -3307,16 +3197,20 @@
       // DERIVATION STEP-BY-STEP
       // ============================================================
       function initDerivations() {
-        document
-          .getElementById("btn-deriv-ngon")
-          .addEventListener("click", () => revealDerivStep("deriv-ngon"));
-        document
-          .getElementById("btn-reset-ngon")
-          .addEventListener("click", () => resetDerivStep("deriv-ngon"));
+        const ids = ["deriv-sp", "deriv-spl", "deriv-s", "deriv-v"];
+        ids.forEach((id) => {
+          const btnDeriv = document.getElementById(`btn-${id}`);
+          const btnReset = document.getElementById(`btn-reset-${id}`);
+          if (btnDeriv)
+            btnDeriv.addEventListener("click", () => revealDerivStep(id));
+          if (btnReset)
+            btnReset.addEventListener("click", () => resetDerivStep(id));
+        });
       }
 
       function revealDerivStep(id) {
         const container = document.getElementById(id);
+        if (!container) return;
         const steps = container.querySelectorAll(".deriv-step");
         const current = derivSteps[id];
 
@@ -3326,20 +3220,18 @@
           renderMathIn(steps[current]);
         }
 
-        document.getElementById(`btn-reset-${id}`).style.display =
-          "inline-block";
-
         if (derivSteps[id] >= steps.length) {
-          const btn = document.getElementById(`btn-deriv-${id.split("-")[1]}`);
-          if (btn) {
-            btn.style.display = "none";
-          }
+          const btn = document.getElementById(`btn-${id}`);
+          if (btn) btn.style.display = "none";
+          const resetBtn = document.getElementById(`btn-reset-${id}`);
+          if (resetBtn) resetBtn.style.display = "inline-block";
         }
       }
 
       function resetDerivStep(id) {
         derivSteps[id] = 1;
         const container = document.getElementById(id);
+        if (!container) return;
         const steps = container.querySelectorAll(".deriv-step");
         steps.forEach((step, index) => {
           if (index === 0) {
@@ -3348,9 +3240,10 @@
             step.classList.remove("visible");
           }
         });
-        const btn = document.getElementById(`btn-deriv-${id.split("-")[1]}`);
+        const btn = document.getElementById(`btn-${id}`);
         if (btn) btn.style.display = "inline-block";
-        document.getElementById(`btn-reset-${id}`).style.display = "none";
+        const resetBtn = document.getElementById(`btn-reset-${id}`);
+        if (resetBtn) resetBtn.style.display = "none";
       }
 
       // ============================================================
@@ -3422,62 +3315,6 @@
       }
 
       // ============================================================
-      // QUIZ
-      // ============================================================
-      function selectQuiz(qId, el, idx) {
-        if (quizState[qId] !== undefined) return; // Already answered
-
-        const question = document.getElementById(qId);
-        const options = question.querySelectorAll(".quiz-option");
-        const feedback = document.getElementById("fb-" + qId);
-        const correctIdx = quizAnswers[qId];
-
-        quizState[qId] = idx;
-
-        // Mark all as disabled
-        options.forEach((opt) => opt.classList.add("disabled"));
-
-        // Mark selected
-        el.classList.add("selected");
-
-        if (idx === correctIdx) {
-          el.classList.add("correct-answer");
-          feedback.textContent = quizExplanations[qId].correct;
-          feedback.className = "quiz-feedback correct show";
-        } else {
-          el.classList.add("wrong-answer");
-          options[correctIdx].classList.add("correct-answer");
-          feedback.textContent = quizExplanations[qId].wrong;
-          feedback.className = "quiz-feedback incorrect show";
-        }
-
-        renderMathIn(feedback);
-      }
-
-      function evaluateQuiz() {
-        const total = Object.keys(quizAnswers).length;
-        let correct = 0;
-        for (const qId in quizAnswers) {
-          if (quizState[qId] === quizAnswers[qId]) correct++;
-        }
-
-        const scoreDiv = document.getElementById("quiz-score");
-        scoreDiv.classList.add("show");
-        document.getElementById("score-num").textContent =
-          correct + " / " + total;
-
-        const labels = [
-          "Skúste to znova, prečítajte si teóriu ešte raz.",
-          "Dobrý základ, ale ešte je čo zlepšovať!",
-          "Veľmi dobre! Takmer perfektné.",
-          "Solídny výkon!",
-          "Výborne! Máte to zvládnuté na jednotku! 🎉",
-        ];
-        document.getElementById("score-label").textContent =
-          labels[correct] || labels[0];
-      }
-
-      // ============================================================
       // KATEX RENDERING
       // ============================================================
       function renderMathIn(el) {
@@ -3517,7 +3354,7 @@
                   siet: "nav-siet",
                   vzorce: "nav-vzorce",
                   priklady: "nav-priklady",
-                  kviz: "nav-kviz",
+                  historia: "nav-historia",
                 };
                 const navId = matchMap[id];
                 if (navId)
