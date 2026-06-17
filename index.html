@@ -1311,21 +1311,13 @@
         </h1>
 
         <div class="card definition-card">
-          <h3>Definícia hranola</h3>
+          <h3>Definícia</h3>
           <p>
             <strong>Hranol</strong> je priestorové teleso ohraničené dvoma
-            rovnobežnými kongruentnými \(n\)-uholníkmi –
-            <strong>podstavami</strong> – a \(n\) bočnými stenami, ktoré sú
-            rovnobežníky.
-          </p>
-          <p>
-            Ak sú bočné steny <strong>kolmé</strong> na podstavy (bočné hrany sú
-            kolmice na rovinu podstavy), hovoríme o
-            <strong>kolmom hranole</strong> – jeho bočné steny sú obdĺžniky.
-          </p>
-          <p>
-            <strong>Pravidelný \(n\)-boký hranol</strong> je kolmý hranol,
-            ktorého podstavy sú pravidelné \(n\)-uholníky.
+            rovnobežnými kongruentnými \(n\)-uholníkmi
+            (<strong>podstavami</strong>) a \(n\) bočnými stenami (obdĺžnikmi).
+            <strong>Pravidelný \(n\)-boký hranol</strong>
+            má podstavy v tvare pravidelného \(n\)-uholníka.
           </p>
         </div>
 
@@ -1350,55 +1342,8 @@
               <td>Vrcholy</td>
               <td>\(2n\)</td>
             </tr>
-            <tr>
-              <td>Podstavy</td>
-              <td>\(2\) (kongruentné \(n\)-uholníky)</td>
-            </tr>
-            <tr>
-              <td>Bočné steny</td>
-              <td>\(n\) (rovnobežníky / obdĺžniky)</td>
-            </tr>
           </tbody>
         </table>
-
-        <h3>Rozdelenie</h3>
-        <div class="special-cases">
-          <div class="special-case">
-            <div class="sc-icon">📐</div>
-            <div class="sc-name">Kolmý hranol</div>
-            <div class="sc-detail">
-              Bočné hrany ⊥ podstava<br />Bočné steny sú obdĺžniky
-            </div>
-          </div>
-
-          <div class="special-case">
-            <div class="sc-icon">⬡</div>
-            <div class="sc-name">Pravidelný hranol</div>
-            <div class="sc-detail">
-              Kolmý hranol +<br />podstava = pravidelný n-uholník
-            </div>
-          </div>
-        </div>
-
-        <div class="card history-note">
-          <h4>Historická poznámka</h4>
-          <p>
-            Pojem hranola siaha k <strong>Eukleidovým Základom</strong> (okolo
-            300 pred n. l.), kde bol definovaný v Knihe XI. Staroveké
-            civilizácie využívali hranolové tvary v architektúre – od mohutných
-            kvádrovitých blokov egyptských stavieb pri Gíze po sofistikované
-            kamenné hranoly v gréckom staviteľstve.
-          </p>
-          <p>
-            Dnes hranol dominuje modernej architektúre:
-            <strong>mrakodrapy</strong> s pravouhlým pôdorysom sú kvádre, budovy
-            s trojuholníkovým alebo šesťuholníkovým prierezom slúžia ako
-            architektonické dominanty. Pravidelný šesťboký hranol sa objavuje v
-            prírode – <strong>včelie bunky (plásty)</strong> tvoria
-            šesťuholníkovú mriežku, a bežná <strong>ceruzka</strong> má prierez
-            pravidelného šesťuholníka.
-          </p>
-        </div>
       </section>
 
       <!-- ===== SECTION 2: 3D LABORATÓRIUM ===== -->
@@ -1527,146 +1472,44 @@
 
       <!-- ===== SECTION 4: VZORCE ===== -->
       <section id="vzorce">
-        <h2><span class="section-number">04</span> Vzorce s odvodením</h2>
+        <h2><span class="section-number">04</span> Výpočet S a V</h2>
 
-        <!-- Surface Area -->
-        <h3>Povrch hranola (S)</h3>
-        <div class="card card-accent">
-          <p>
-            Celkový povrch sa skladá z dvoch podstáv a plášťa, bez ohľadu na to,
-            koľko hrán má \(n\)-uholník v podstave:
-          </p>
-          <p>$$S = 2 \cdot S_p + S_{pl}$$</p>
-          <p class="text-muted" style="margin-top: 1rem">
-            kde \(S_p\) je obsah podstavy a \(S_{pl}\) je obsah plášťa (bočný
-            povrch).
-          </p>
-        </div>
-
-        <h4>Odvodenie vzorca pre plášť</h4>
-        <p>
-          Kliknite na <strong>„Ďalší krok"</strong> a postupne odhaľte
-          odvodenie:
-        </p>
-        <div class="derivation-steps" id="deriv-surface">
-          <div class="deriv-step visible">
-            <div class="step-number">KROK 1</div>
-            <p>
-              Plášť hranola tvorí \(n\) obdĺžnikov (pri kolmom hranole). Každý
-              obdĺžnik má šírku rovnú jednej strane podstavy a výšku rovnú výške
-              hranola \(v\).
-            </p>
+        <!-- Two unified formula cards side by side -->
+        <div class="formula-grid">
+          <div class="formula-card">
+            <h4>Povrch (S)</h4>
+            <div class="formula-main">
+              <p>$$S = 2 \cdot S_p + S_{pl}$$</p>
+            </div>
+            <ul>
+              <li>\(S_p\) – obsah jednej podstavy</li>
+              <li>\(S_{pl} = n \cdot a \cdot v\) – obsah plášťa</li>
+              <li>
+                Plášť = \(n\) obdĺžnikov rozvinutých do obdĺžnika \(o \times v\)
+              </li>
+            </ul>
           </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 2</div>
-            <p>
-              Ak „rozbalíme" plášť do roviny, všetkých \(n\) obdĺžnikov sa
-              poskladá vedľa seba do jedného veľkého obdĺžnika. Šírka tohto
-              obdĺžnika je rovná súčtu všetkých strán podstavy, čo je vlastne
-              <strong>obvod podstavy \(o\)</strong>.
-            </p>
+          <div class="formula-card">
+            <h4>Objem (V)</h4>
+            <div class="formula-main">
+              <p>$$V = S_p \cdot v$$</p>
+            </div>
+            <ul>
+              <li>\(S_p\) – obsah jednej podstavy</li>
+              <li>\(v\) – výška telesa (kolmá vzdialenosť podstáv)</li>
+              <li>Objem = plocha podstavy × počet „vrstiev" do výšky</li>
+            </ul>
           </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 3</div>
-            <p>
-              Výška obdĺžnika je výška hranola \(v\). Obsah plášťa preto je:
-            </p>
-            <p>$$S_{pl} = o \cdot v$$</p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 4</div>
-            <p>
-              Pre pravidelný \(n\)-boký hranol s hranou \(a\) je obvod \(o = n
-              \cdot a\), teda:
-            </p>
-            <p>$$S_{pl} = n \cdot a \cdot v$$</p>
-            <p>A celkový povrch:</p>
-            <p>$$\boxed{S = 2 \cdot S_p + n \cdot a \cdot v}$$</p>
-          </div>
-        </div>
-        <div
-          class="deriv-controls"
-          style="display: flex; gap: 0.5rem; margin-top: 1rem"
-        >
-          <button class="btn btn-sm" id="btn-deriv-surface">
-            Ďalší krok →
-          </button>
-          <button
-            class="btn btn-sm btn-outline"
-            id="btn-reset-surface"
-            style="display: none"
-          >
-            Reset krokov
-          </button>
         </div>
 
-        <!-- Volume -->
-        <h3>Objem hranola (V)</h3>
-        <div class="card card-accent">
-          <p>
-            Objem telesa vyjadruje celkové množstvo priestoru, ktoré teleso
-            zaberá:
-          </p>
-          <p>$$V = S_p \cdot v$$</p>
-          <p class="text-muted" style="margin-top: 1rem">
-            kde \(S_p\) je obsah podstavy a \(v\) je výška telesa.
-          </p>
-        </div>
-
-        <h4>Odvodenie vzorca pre objem</h4>
-        <p>
-          Kliknite na <strong>„Ďalší krok"</strong> a postupne odhaľte
-          odvodenie:
-        </p>
-        <div class="derivation-steps" id="deriv-volume">
-          <div class="deriv-step visible">
-            <div class="step-number">KROK 1</div>
-            <p>
-              Objem ľubovoľného hranola sa vypočíta ako súčin obsahu podstavy
-              (\(S_p\)) a výšky hranola (\(v\)).
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 2</div>
-            <p>
-              Predstaviť si to môžeme veľmi jednoducho: obsah podstavy \(S_p\)
-              nám hovorí, koľko miesta (plochy) zaberie jedna tenká "vrstva"
-              alebo "plátok" na spodku.
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 3</div>
-            <p>
-              Ak tieto plátky naukladáme na seba až do výšky \(v\), vyplníme
-              celý vnútorný priestor telesa.
-            </p>
-          </div>
-          <div class="deriv-step">
-            <div class="step-number">KROK 4</div>
-            <p>Objem je teda daný vzťahom:</p>
-            <p>$$\boxed{V = S_p \cdot v}$$</p>
-          </div>
-        </div>
-        <div
-          class="deriv-controls"
-          style="display: flex; gap: 0.5rem; margin-top: 1rem"
-        >
-          <button class="btn btn-sm" id="btn-deriv-volume">Ďalší krok →</button>
-          <button
-            class="btn btn-sm btn-outline"
-            id="btn-reset-volume"
-            style="display: none"
-          >
-            Reset krokov
-          </button>
-        </div>
-
-        <!-- Regular n-gon area -->
-        <h3>Obsah pravidelného \(n\)-uholníka</h3>
+        <!-- Obsah podstavy derivation -->
+        <h3>Obsah podstavy \(S_p\)</h3>
         <div class="card card-highlight">
           <p>
-            Pravidelný \(n\)-uholník s hranou \(a\) rozdelíme na \(n\)
-            rovnoramenných trojuholníkov so spoločným vrcholom v strede:
+            Celkový povrch sa skladá z <strong>dvoch podstáv</strong> a
+            <strong>plášťa</strong>, bez ohľadu na to, koľko hrán má
+            \(n\)-uholník. Pre výpočet \(S_p\) rozdelíme pravidelný
+            \(n\)-uholník na \(n\) trojuholníkov:
           </p>
         </div>
 
@@ -1680,14 +1523,9 @@
           </div>
           <div class="deriv-step">
             <div class="step-number">KROK 2</div>
+            <p>Pre pravouhlý trojuholník (polovica jedného z n dielikov):</p>
             <p>
-              Uhol pri strede jedného trojuholníka je \(\frac{2\pi}{n}\).
-              Polovica tohto uhla je \(\frac{\pi}{n}\). Pre pravouhlý
-              trojuholník (polovica jedného z n dielikov):
-            </p>
-            <p>
-              $$\tan\!\left(\frac{\pi}{n}\right) = \frac{a/2}{r_a}
-              \quad\Rightarrow\quad r_a = \frac{a}{2\,\tan(\pi/n)} = \frac{a}{2}
+              $$r_a = \frac{a}{2\,\tan(\pi/n)} = \frac{a}{2}
               \cot\!\left(\frac{\pi}{n}\right)$$
             </p>
           </div>
@@ -1695,9 +1533,8 @@
             <div class="step-number">KROK 3</div>
             <p>Obsah jedného trojuholníka:</p>
             <p>
-              $$S_\triangle = \frac{1}{2} \cdot a \cdot r_a = \frac{1}{2} \cdot
-              a \cdot \frac{a}{2} \cot\!\left(\frac{\pi}{n}\right) =
-              \frac{a^2}{4} \cot\!\left(\frac{\pi}{n}\right)$$
+              $$S_\triangle = \frac{1}{2} \cdot a \cdot r_a = \frac{a^2}{4}
+              \cot\!\left(\frac{\pi}{n}\right)$$
             </p>
           </div>
           <div class="deriv-step">
@@ -1723,76 +1560,32 @@
           </button>
         </div>
 
-        <!-- Special cases table -->
-        <h3>Špeciálne prípady</h3>
-        <div class="special-cases">
-          <div class="special-case">
-            <div class="sc-icon">🧊</div>
-            <div class="sc-name">Kocka</div>
-            <div class="sc-detail">
-              \(n=4, \; a = v\)<br />\(V = a^3\)<br />\(S = 6a^2\)
-            </div>
-          </div>
-          <div class="special-case">
-            <div class="sc-icon">📦</div>
-            <div class="sc-name">Kváder</div>
-            <div class="sc-detail">
-              \(n=4\)<br />\(V = a \cdot b \cdot c\)<br />\(S = 2(ab+ac+bc)\)
-            </div>
-          </div>
-          <div class="special-case">
-            <div class="sc-icon">🔺</div>
-            <div class="sc-name">Trojboký hranol</div>
-            <div class="sc-detail">
-              \(n=3\)<br />\(S_p = \frac{\sqrt{3}}{4}a^2\)
-            </div>
-          </div>
-          <div class="special-case">
-            <div class="sc-icon">🐝</div>
-            <div class="sc-name">Šesťboký hranol</div>
-            <div class="sc-detail">
-              \(n=6\)<br />\(S_p = \frac{3\sqrt{3}}{2}a^2\)<br />Včelie plásty,
-              ceruzky
-            </div>
-          </div>
-        </div>
-
+        <!-- Prehľad vzorcov – tabuľka -->
+        <h3>Prehľad vzorcov</h3>
         <table class="formula-table">
           <thead>
             <tr>
               <th>Hranol</th>
-              <th>Obsah podstavy \(S_p\)</th>
-              <th>Povrch \(S\)</th>
-              <th>Objem \(V\)</th>
+              <th>\(S_p\)</th>
+              <th>\(S\)</th>
+              <th>\(V\)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Kocka (hrana \(a\))</td>
+              <td>Kocka</td>
               <td>\(a^2\)</td>
               <td>\(6a^2\)</td>
               <td>\(a^3\)</td>
             </tr>
             <tr>
-              <td>Kváder (\(a \times b \times c\))</td>
+              <td>Kváder</td>
               <td>\(a \cdot b\)</td>
               <td>\(2(ab + ac + bc)\)</td>
               <td>\(abc\)</td>
             </tr>
             <tr>
-              <td>Prav. trojboký (\(a, v\))</td>
-              <td>\(\frac{\sqrt{3}}{4}a^2\)</td>
-              <td>\(\frac{\sqrt{3}}{2}a^2 + 3av\)</td>
-              <td>\(\frac{\sqrt{3}}{4}a^2 v\)</td>
-            </tr>
-            <tr>
-              <td>Prav. šesťboký (\(a, v\))</td>
-              <td>\(\frac{3\sqrt{3}}{2}a^2\)</td>
-              <td>\(3\sqrt{3}\,a^2 + 6av\)</td>
-              <td>\(\frac{3\sqrt{3}}{2}a^2 v\)</td>
-            </tr>
-            <tr>
-              <td>Prav. \(n\)-boký (\(a, v\))</td>
+              <td>\(n\)-boký</td>
               <td>\(\frac{na^2}{4}\cot\frac{\pi}{n}\)</td>
               <td>\(\frac{na^2}{2}\cot\frac{\pi}{n} + nav\)</td>
               <td>\(\frac{na^2 v}{4}\cot\frac{\pi}{n}\)</td>
