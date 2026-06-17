@@ -1481,8 +1481,15 @@
             Rozdelíme ho na \(n\) rovnoramenných trojuholníkov so spoločným
             vrcholom v strede.
           </p>
+          <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
+            $$S_p = \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)$$
+          </div>
+          <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
+            <button class="btn btn-sm btn-primary" id="btn-deriv-sp">Ukázať postup →</button>
+            <button class="btn btn-sm" id="btn-reset-sp" style="background-color: #6c757d; color: white; border: none;">Reset</button>
+          </div>
           <div class="derivation-steps" id="deriv-sp">
-            <div class="deriv-step visible">
+            <div class="deriv-step">
               <div class="step-number">KROK 1</div>
               <p>
                 Každý z \(n\) trojuholníkov má základňu \(a\) (strana
@@ -1515,29 +1522,22 @@
               </p>
             </div>
           </div>
-          <div
-            class="deriv-controls"
-            style="display: flex; gap: 0.5rem; margin-top: 1rem"
-          >
-            <button class="btn btn-sm" id="btn-deriv-sp">
-              Ukázať postup →
-            </button>
-            <button
-              class="btn btn-sm btn-outline"
-              id="btn-reset-sp"
-              style="display: none"
-            >
-              Skryť postup
-            </button>
-          </div>
+
         </div>
 
         <!-- Obsah plášťa (S_pl) -->
         <h3>Obsah plášťa (\(S_{pl}\))</h3>
         <div class="card card-accent">
           <p>Plášť hranola tvorí súčet obsahov všetkých jeho bočných stien.</p>
+          <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
+            $$S_{pl} = n \cdot a \cdot v$$
+          </div>
+          <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
+            <button class="btn btn-sm btn-primary" id="btn-deriv-spl">Ukázať postup →</button>
+            <button class="btn btn-sm" id="btn-reset-spl" style="background-color: #6c757d; color: white; border: none;">Reset</button>
+          </div>
           <div class="derivation-steps" id="deriv-spl">
-            <div class="deriv-step visible">
+            <div class="deriv-step">
               <div class="step-number">KROK 1</div>
               <p>
                 Pravidelný \(n\)-boký hranol má \(n\) rovnakých bočných stien.
@@ -1566,21 +1566,7 @@
               <p>$$\boxed{S_{pl} = O \cdot v = n \cdot a \cdot v}$$</p>
             </div>
           </div>
-          <div
-            class="deriv-controls"
-            style="display: flex; gap: 0.5rem; margin-top: 1rem"
-          >
-            <button class="btn btn-sm" id="btn-deriv-spl">
-              Ukázať postup →
-            </button>
-            <button
-              class="btn btn-sm btn-outline"
-              id="btn-reset-spl"
-              style="display: none"
-            >
-              Skryť postup
-            </button>
-          </div>
+
         </div>
 
         <!-- Povrch (S) -->
@@ -1590,8 +1576,15 @@
             Celkový povrch (\(S\)) je súčet obsahu všetkých plôch, ktoré
             ohraničujú teleso.
           </p>
+          <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
+            $$S = 2 \cdot S_p + S_{pl}$$
+          </div>
+          <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
+            <button class="btn btn-sm btn-primary" id="btn-deriv-s">Ukázať postup →</button>
+            <button class="btn btn-sm" id="btn-reset-s" style="background-color: #6c757d; color: white; border: none;">Reset</button>
+          </div>
           <div class="derivation-steps" id="deriv-s">
-            <div class="deriv-step visible">
+            <div class="deriv-step">
               <div class="step-number">KROK 1</div>
               <p>
                 Hranol je zhora a zdola ohraničený dvoma zhodnými podstavami.
@@ -1611,19 +1604,7 @@
               <p>$$\boxed{S = 2 \cdot S_p + S_{pl}}$$</p>
             </div>
           </div>
-          <div
-            class="deriv-controls"
-            style="display: flex; gap: 0.5rem; margin-top: 1rem"
-          >
-            <button class="btn btn-sm" id="btn-deriv-s">Ukázať postup →</button>
-            <button
-              class="btn btn-sm btn-outline"
-              id="btn-reset-s"
-              style="display: none"
-            >
-              Skryť postup
-            </button>
-          </div>
+
         </div>
 
         <!-- Objem (V) -->
@@ -1632,8 +1613,15 @@
           <p>
             Objem (\(V\)) vyjadruje veľkosť priestoru, ktorý hranol vyplňuje.
           </p>
+          <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
+            $$V = S_p \cdot v$$
+          </div>
+          <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
+            <button class="btn btn-sm btn-primary" id="btn-deriv-v">Ukázať postup →</button>
+            <button class="btn btn-sm" id="btn-reset-v" style="background-color: #6c757d; color: white; border: none;">Reset</button>
+          </div>
           <div class="derivation-steps" id="deriv-v">
-            <div class="deriv-step visible">
+            <div class="deriv-step">
               <div class="step-number">KROK 1</div>
               <p>
                 Predstavte si podstavu hranola s obsahom \(S_p\) ako základnú
@@ -1656,53 +1644,49 @@
               <p>$$\boxed{V = S_p \cdot v}$$</p>
             </div>
           </div>
-          <div
-            class="deriv-controls"
-            style="display: flex; gap: 0.5rem; margin-top: 1rem"
-          >
-            <button class="btn btn-sm" id="btn-deriv-v">Ukázať postup →</button>
-            <button
-              class="btn btn-sm btn-outline"
-              id="btn-reset-v"
-              style="display: none"
-            >
-              Skryť postup
-            </button>
-          </div>
+
         </div>
 
         <!-- Prehľad vzorcov – tabuľka -->
         <h3>Prehľad vzorcov</h3>
-        <table class="formula-table">
-          <thead>
-            <tr>
-              <th>Hranol</th>
-              <th>\(S_p\)</th>
-              <th>\(S\)</th>
-              <th>\(V\)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Kocka</td>
-              <td>\(a^2\)</td>
-              <td>\(6a^2\)</td>
-              <td>\(a^3\)</td>
-            </tr>
-            <tr>
-              <td>Kváder</td>
-              <td>\(a \cdot b\)</td>
-              <td>\(2(ab + ac + bc)\)</td>
-              <td>\(abc\)</td>
-            </tr>
-            <tr>
-              <td>\(n\)-boký</td>
-              <td>\(\frac{na^2}{4}\cot\frac{\pi}{n}\)</td>
-              <td>\(\frac{na^2}{2}\cot\frac{\pi}{n} + nav\)</td>
-              <td>\(\frac{na^2 v}{4}\cot\frac{\pi}{n}\)</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="overflow-x: auto;">
+          <table class="formula-table" style="width: 100%; border-collapse: collapse; text-align: center; background: var(--bg-card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <thead style="background: var(--primary); color: white;">
+              <tr>
+                <th style="padding: 1rem;">Teleso</th>
+                <th style="padding: 1rem;">Povrch (\(S\))</th>
+                <th style="padding: 1rem;">Objem (\(V\))</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-primary);">
+                <td style="padding: 1rem; font-weight: bold;">Kocka</td>
+                <td style="padding: 1rem;">\(S = 6a^2\)</td>
+                <td style="padding: 1rem;">\(V = a^3\)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-primary);">
+                <td style="padding: 1rem; font-weight: bold;">Kváder</td>
+                <td style="padding: 1rem;">\(S = 2(ab + bc + ac)\)</td>
+                <td style="padding: 1rem;">\(V = a \cdot b \cdot c\)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-primary);">
+                <td style="padding: 1rem; font-weight: bold;">Trojboký hranol</td>
+                <td style="padding: 1rem;">\(S = 2 \cdot S_p + S_{pl}\)</td>
+                <td style="padding: 1rem;">\(V = S_p \cdot v\)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-primary);">
+                <td style="padding: 1rem; font-weight: bold;">Šesťboký hranol</td>
+                <td style="padding: 1rem;">\(S = 2 \cdot S_p + S_{pl}\)</td>
+                <td style="padding: 1rem;">\(V = S_p \cdot v\)</td>
+              </tr>
+              <tr>
+                <td style="padding: 1rem; font-weight: bold;">Všeobecný \(n\)-boký hranol</td>
+                <td style="padding: 1rem;">\(S = 2 \cdot S_p + S_{pl}\)</td>
+                <td style="padding: 1rem;">\(V = S_p \cdot v\)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- ===== SECTION 5: PRÍKLADY ===== -->
@@ -2260,10 +2244,10 @@
 
       // Derivation step tracking
       const derivSteps = {
-        "deriv-sp": 1,
-        "deriv-spl": 1,
-        "deriv-s": 1,
-        "deriv-v": 1,
+        "deriv-sp": 0,
+        "deriv-spl": 0,
+        "deriv-s": 0,
+        "deriv-v": 0,
       };
 
       // Example step tracking
@@ -3222,28 +3206,28 @@
 
         if (derivSteps[id] >= steps.length) {
           const btn = document.getElementById(`btn-${id}`);
-          if (btn) btn.style.display = "none";
-          const resetBtn = document.getElementById(`btn-reset-${id}`);
-          if (resetBtn) resetBtn.style.display = "inline-block";
+          if (btn) {
+              btn.disabled = true;
+              btn.style.opacity = "0.5";
+              btn.style.cursor = "not-allowed";
+          }
         }
       }
 
       function resetDerivStep(id) {
-        derivSteps[id] = 1;
+        derivSteps[id] = 0;
         const container = document.getElementById(id);
         if (!container) return;
         const steps = container.querySelectorAll(".deriv-step");
-        steps.forEach((step, index) => {
-          if (index === 0) {
-            step.classList.add("visible");
-          } else {
-            step.classList.remove("visible");
-          }
+        steps.forEach((step) => {
+          step.classList.remove("visible");
         });
         const btn = document.getElementById(`btn-${id}`);
-        if (btn) btn.style.display = "inline-block";
-        const resetBtn = document.getElementById(`btn-reset-${id}`);
-        if (resetBtn) resetBtn.style.display = "none";
+        if (btn) {
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            btn.style.cursor = "pointer";
+        }
       }
 
       // ============================================================
