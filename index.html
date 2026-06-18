@@ -1473,102 +1473,6 @@
       <section id="vzorce">
         <h2><span class="section-number">04</span> Výpočet S a V</h2>
 
-        <!-- Obsah podstavy (S_p) -->
-        <h3>Obsah podstavy (\(S_p\))</h3>
-        <div class="card card-accent">
-          <p>
-            Všeobecný postup pre výpočet obsahu pravidelného \(n\)-uholníka.
-            Rozdelíme ho na \(n\) rovnoramenných trojuholníkov so spoločným
-            vrcholom v strede.
-          </p>
-          <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
-            $$S_p = \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)$$
-          </div>
-          <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
-            <button class="btn btn-sm btn-primary" id="btn-deriv-sp">Ukázať postup →</button>
-            <button class="btn btn-sm" id="btn-reset-sp" style="background-color: #6c757d; color: white; border: none;">Reset</button>
-          </div>
-          <div class="derivation-steps" id="deriv-sp">
-            <div class="deriv-step">
-              <div class="step-number">KROK 1</div>
-              <p>
-                Každý z \(n\) trojuholníkov má základňu \(a\) (strana
-                n-uholníka) a výšku \(r_a\) (apotéma – vzdialenosť od stredu k
-                strane).
-              </p>
-            </div>
-            <div class="deriv-step">
-              <div class="step-number">KROK 2</div>
-              <p>Pre pravouhlý trojuholník (polovica jedného z n dielikov):</p>
-              <p>
-                $$r_a = \frac{a}{2\,\tan(\pi/n)} = \frac{a}{2}
-                \cot\!\left(\frac{\pi}{n}\right)$$
-              </p>
-            </div>
-            <div class="deriv-step">
-              <div class="step-number">KROK 3</div>
-              <p>Obsah jedného trojuholníka:</p>
-              <p>
-                $$S_\triangle = \frac{1}{2} \cdot a \cdot r_a = \frac{a^2}{4}
-                \cot\!\left(\frac{\pi}{n}\right)$$
-              </p>
-            </div>
-            <div class="deriv-step">
-              <div class="step-number">KROK 4</div>
-              <p>Celkový obsah pravidelného \(n\)-uholníka:</p>
-              <p>
-                $$\boxed{S_p = n \cdot S_\triangle =
-                \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)}$$
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Obsah plášťa (S_pl) -->
-        <h3>Obsah plášťa (\(S_{pl}\))</h3>
-        <div class="card card-accent">
-          <p>Plášť hranola tvorí súčet obsahov všetkých jeho bočných stien.</p>
-          <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
-            $$S_{pl} = n \cdot a \cdot v$$
-          </div>
-          <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
-            <button class="btn btn-sm btn-primary" id="btn-deriv-spl">Ukázať postup →</button>
-            <button class="btn btn-sm" id="btn-reset-spl" style="background-color: #6c757d; color: white; border: none;">Reset</button>
-          </div>
-          <div class="derivation-steps" id="deriv-spl">
-            <div class="deriv-step">
-              <div class="step-number">KROK 1</div>
-              <p>
-                Pravidelný \(n\)-boký hranol má \(n\) rovnakých bočných stien.
-                Každá stena je obdĺžnik so šírkou \(a\) a výškou \(v\).
-              </p>
-            </div>
-            <div class="deriv-step">
-              <div class="step-number">KROK 2</div>
-              <p>
-                Ak plášť "rozbalíme" do roviny, dostaneme jeden veľký obdĺžnik.
-              </p>
-            </div>
-            <div class="deriv-step">
-              <div class="step-number">KROK 3</div>
-              <p>
-                Šírka tohto veľkého obdĺžnika je rovná obvodu podstavy: \(O = n
-                \cdot a\).
-              </p>
-            </div>
-            <div class="deriv-step">
-              <div class="step-number">KROK 4</div>
-              <p>
-                Celkový obsah plášťa vypočítame ako obvod podstavy \(\times\)
-                výška telesa:
-              </p>
-              <p>$$\boxed{S_{pl} = O \cdot v = n \cdot a \cdot v}$$</p>
-            </div>
-          </div>
-
-        </div>
-
         <!-- Povrch (S) -->
         <h3>Povrch (\(S\))</h3>
         <div class="card card-accent">
@@ -1602,6 +1506,114 @@
                 akéhokoľvek hranola:
               </p>
               <p>$$\boxed{S = 2 \cdot S_p + S_{pl}}$$</p>
+            </div>
+          </div>
+
+          <!-- Rozklikávací obsah podstavy (S_p) -->
+          <div class="example-card" id="detail-sp" style="margin-top: 1.5rem; background: var(--bg-secondary);">
+            <div class="example-header" tabindex="0" role="button" aria-expanded="false" onclick="toggleExample('detail-sp')">
+              <span class="example-title">Výpočet obsahu podstavy (\(S_p\))</span>
+              <span class="example-chevron">▾</span>
+            </div>
+            <div class="example-body">
+              <div class="example-content">
+                <p>
+                  Všeobecný postup pre výpočet obsahu pravidelného \(n\)-uholníka.
+                  Rozdelíme ho na \(n\) rovnoramenných trojuholníkov so spoločným
+                  vrcholom v strede.
+                </p>
+                <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
+                  $$S_p = \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)$$
+                </div>
+                <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
+                  <button class="btn btn-sm btn-primary" id="btn-deriv-sp">Ukázať postup →</button>
+                  <button class="btn btn-sm" id="btn-reset-sp" style="background-color: #6c757d; color: white; border: none;">Reset</button>
+                </div>
+                <div class="derivation-steps" id="deriv-sp">
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 1</div>
+                    <p>
+                      Každý z \(n\) trojuholníkov má základňu \(a\) (strana
+                      n-uholníka) a výšku \(r_a\) (apotéma – vzdialenosť od stredu k
+                      strane).
+                    </p>
+                  </div>
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 2</div>
+                    <p>Pre pravouhlý trojuholník (polovica jedného z n dielikov):</p>
+                    <p>
+                      $$r_a = \frac{a}{2\,\tan(\pi/n)} = \frac{a}{2}
+                      \cot\!\left(\frac{\pi}{n}\right)$$
+                    </p>
+                  </div>
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 3</div>
+                    <p>Obsah jedného trojuholníka:</p>
+                    <p>
+                      $$S_\triangle = \frac{1}{2} \cdot a \cdot r_a = \frac{a^2}{4}
+                      \cot\!\left(\frac{\pi}{n}\right)$$
+                    </p>
+                  </div>
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 4</div>
+                    <p>Celkový obsah pravidelného \(n\)-uholníka:</p>
+                    <p>
+                      $$\boxed{S_p = n \cdot S_\triangle =
+                      \frac{n\,a^2}{4}\,\cot\!\left(\frac{\pi}{n}\right)}$$
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rozklikávací obsah plášťa (S_pl) -->
+          <div class="example-card" id="detail-spl" style="margin-bottom: 0; background: var(--bg-secondary);">
+            <div class="example-header" tabindex="0" role="button" aria-expanded="false" onclick="toggleExample('detail-spl')">
+              <span class="example-title">Výpočet obsahu plášťa (\(S_{pl}\))</span>
+              <span class="example-chevron">▾</span>
+            </div>
+            <div class="example-body">
+              <div class="example-content">
+                <p>Plášť hranola tvorí súčet obsahov všetkých jeho bočných stien.</p>
+                <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 1rem 0;">
+                  $$S_{pl} = n \cdot a \cdot v$$
+                </div>
+                <div class="deriv-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem">
+                  <button class="btn btn-sm btn-primary" id="btn-deriv-spl">Ukázať postup →</button>
+                  <button class="btn btn-sm" id="btn-reset-spl" style="background-color: #6c757d; color: white; border: none;">Reset</button>
+                </div>
+                <div class="derivation-steps" id="deriv-spl">
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 1</div>
+                    <p>
+                      Pravidelný \(n\)-boký hranol má \(n\) rovnakých bočných stien.
+                      Každá stena je obdĺžnik so šírkou \(a\) a výškou \(v\).
+                    </p>
+                  </div>
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 2</div>
+                    <p>
+                      Ak plášť "rozbalíme" do roviny, dostaneme jeden veľký obdĺžnik.
+                    </p>
+                  </div>
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 3</div>
+                    <p>
+                      Šírka tohto veľkého obdĺžnika je rovná obvodu podstavy: \(O = n
+                      \cdot a\).
+                    </p>
+                  </div>
+                  <div class="deriv-step">
+                    <div class="step-number">KROK 4</div>
+                    <p>
+                      Celkový obsah plášťa vypočítame ako obvod podstavy \(\times\)
+                      výška telesa:
+                    </p>
+                    <p>$$\boxed{S_{pl} = O \cdot v = n \cdot a \cdot v}$$</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
